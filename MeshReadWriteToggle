@@ -37,8 +37,8 @@ namespace heartingNinja
                         // Apply the readability state
                         mesh.UploadMeshData(!state);
 
-                        // Refresh the asset database to reflect the changes in the Unity Editor
-                        AssetDatabase.Refresh();
+                        // Set mesh as dirty to ensure it is saved
+                        EditorUtility.SetDirty(mesh);                        
                     }
                     else
                     {
@@ -46,6 +46,9 @@ namespace heartingNinja
                     }
                 }
             }
+
+            // Refresh the asset database to reflect the changes in the Unity Editor
+            AssetDatabase.Refresh();
         }
     }
 }
