@@ -12,7 +12,7 @@ namespace heartingNinja
             ModifySelectedAssetsReadWriteState(false);
         }
 
-        [MenuItem("Tools/heartingNinja/ReadWrite/True")]
+        [MenuItem("Tools/heartingNinja/Read-Write/True")]
         static void ModifySelectedAssetsToTrue()
         {
             ModifySelectedAssetsReadWriteState(true);
