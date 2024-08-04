@@ -1,5 +1,5 @@
 # MeshReadWriteToggle
-Changes the read/write of a mesh to true or false in Unity
+Changes the read/write of a mesh to false in Unity. It can not turn back to true
 
 ## How to Use
 
