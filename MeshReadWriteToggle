@@ -1,0 +1,52 @@
+#if UNITY_EDITOR
+using UnityEngine;
+using UnityEditor;
+
+namespace heartingNinja
+{
+    public class MeshReadWriteToggle : MonoBehaviour
+    {
+        [MenuItem("Tools/heartingNinja/Read-Write/False")]
+        static void ModifySelectedAssetsToFalse()
+        {
+            ModifySelectedAssetsReadWriteState(false);
+        }
+
+        [MenuItem("Tools/heartingNinja/ReadWrite/True")]
+        static void ModifySelectedAssetsToTrue()
+        {
+            ModifySelectedAssetsReadWriteState(true);
+        }
+
+        static void ModifySelectedAssetsReadWriteState(bool state)
+        {
+            // Get all currently selected objects in the Unity Editor
+            Object[] selectedObjects = Selection.objects;
+
+            foreach (Object selectedObject in selectedObjects)
+            {
+                if (selectedObject != null)
+                {
+                    // Get the path of the selected asset
+                    string assetPath = AssetDatabase.GetAssetPath(selectedObject);
+
+                    // Load the asset as a Mesh
+                    Mesh mesh = AssetDatabase.LoadAssetAtPath<Mesh>(assetPath);
+                    if (mesh != null)
+                    {
+                        // Apply the readability state
+                        mesh.UploadMeshData(!state);
+
+                        // Refresh the asset database to reflect the changes in the Unity Editor
+                        AssetDatabase.Refresh();
+                    }
+                    else
+                    {
+                        Debug.Log($"The asset at path {assetPath} is not a Mesh.");
+                    }
+                }
+            }
+        }
+    }
+}
+#endif
