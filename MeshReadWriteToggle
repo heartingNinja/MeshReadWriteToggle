@@ -12,12 +12,6 @@ namespace heartingNinja
             ModifySelectedAssetsReadWriteState(false);
         }
 
-        [MenuItem("Tools/heartingNinja/Read-Write/True")]
-        static void ModifySelectedAssetsToTrue()
-        {
-            ModifySelectedAssetsReadWriteState(true);
-        }
-
         static void ModifySelectedAssetsReadWriteState(bool state)
         {
             // Get all currently selected objects in the Unity Editor
